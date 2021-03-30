@@ -7,6 +7,25 @@
         <link rel="stylesheet" href="main.css"/>
         <!--Feel free to add more CSS files as needed-->
         <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
+        <style type="text/css">
+            /* Custom style rules go here. We've included a few, but feel free to write your own! */
+            button:focus {
+                outline: 0 !important;
+            }
+            svg {
+                display: block;
+                margin: 0 auto;
+                font: 10px sans-serif;
+            }
+            .tooltip {
+                position: absolute;
+                font-size: 12px;
+                min-width: 100px;
+                padding: 10px;
+                width:  auto;
+                height: auto;
+            }
+        </style>
     </head>
 <body>
     <div class="header">
@@ -15,14 +34,80 @@
     <!--  We included a basic HTML structure for the 3 graphs here. Feel free to change this if you'd like  -->
     <div class="row">
         <div class="col-lg-6">
+            <h3>Graph 1</h3>
             <div id="graph1"></div>
+            
+            <h3>Graph 2</h3>
             <div id="graph2"></div><br/>
+            
         </div>
         <div class="col-lg-6">
+            <h3>Graph 3</h3>
             <div id="graph3"></div>
+            
+        </div>
+        <div>
+            <p>1.) 
+                There were 3 primary questions that were asked regarding the netflix data. The first question was
+                regarding the number of titles per genre. This was answered in my first graph, which represents each 
+                category on the left axis, and have bars representing their number of titles that include that category. I also
+                addressed the question surrounding average runtimes by the release year by aggregating the durations of all movies released in a 
+                given year and then dividing by the total number of movies for that year. The results were then described on graph2 that shows 
+                release dates on the left axis and then avg lengths afterwards.  For the third question, I parsed the dataing using a dictionary that 
+                considered all the unique director/actor pairs, counting each time they presented a movie together. Since the different combinations of actors and directors were quite large,
+                I only considered the top 10 most frequent pairs. 
+            </p>
+
+            <p>2.)
+                One reason that D3 was helpful for the visualization was because it allowed for different manipulations of the same csv 
+                file by attaching it to different divs in the corresponding html file. By creating different svgs that the dg selected different ids with, 
+                I was able to encapsulate/partition different data analysis in the same d3.csv call. This helped enhance the overall visualization since there were 
+                clear distinct qualities between by graphs (i.e. differnt scaling and labeling and windows) Another reason that the D3 was helpful was because of the flexibility
+                given to me to write my own functions to parse out various data and address different questions. Each of the questions, for example, required different 
+                manipulations to the same csv file, so rather than having to create separate files or different programs for handling the data, d3's integration with javascript made 
+                this process seamless. A third reason that d3 was useful was because of the flexibility given to the labelling of text on my visualizations. For example, the 
+                svg appends text to give both axis and graph titles, but also allowed a labeling of each of the individual bars, which gives more precision and clarity to the visual comparisons made
+                between each category. While trivial in d3, hard coding something like this in css would be tedious, so it proves to be a more efficient way to handle repetative DOM labeling.
+
+            </p>
+            <p>3.)
+                One problem with D3 is that it can be quite slow to unpack the data, particularly if you have to use loops in order to properly parse the information of 
+                interest. Thus, in handling excessively large data, d3 would likely prove to be too slow. Another potential challenge with D3 is with the lack of standardized 
+                practice/form in the documentation--as many users of d3 would attest to, there is a rather large learning curve and without the 
+                the typical standard practice established, revisiting/collaborating with others on d3 visualizations might be hard to read and messy. This goes hand-in-hand with 
+                the flexibility that d3 also provides. A third challenge includes the reliance on previous frontend experience in order to fully
+                leverage the capabilities of d3. Thus, for beginners, they both need a solid understand of web development and then need additional 
+                familiarity with how to integrate dynamic javascript functions, creating another hurdle for d3 visualization.  
+            </p>
+            <h3>Accessible Data Visualization</h3>
+            <p>4.)
+                Most users would likely find my dashboard accessible because of the effort I made in trying to present the given data in the most intuitive way, which is a principle that Doug Schepers emphasized.
+                For example, many of the questions presented in the prompt asked to identify various measurements (like number of occurences) for specific categories (i.e. actor, director pairs or years or genres). 
+                Thus, I utilized bar graphs to both demonstrate relative measurements (as seen by the comparative sizes) and the exact measurements as provided by the labeled text. As 
+                Amanda Miller mentioned in her article, text labelling and having specific axis labels for specific data points can be beneficial for clarifying charts. Each data "point" is also separated by whitespace, 
+                which Miller also emphasized as an important delineator between data. Individuals who might have more difficulty could include those who are 
+                more sensitive to information overload. In reflecting on graphs 1 and 2, I noticed that there are many years and categories that are relatively squeezed into 
+                the axis. While this was a necessary part of the story I was trying to present, it could perhaps be better encapsulated into more dynamic features (i.e. having an option to show 
+                only a certain number of years). 
+                
+
+            </p>
+            
+            <p>5.)
+                In reflecting on the stages of my design and implementation, I noticed that I was quite preoccupied with 
+                how I planned to parse the data, with little consideration for how the implications of my data parsing would 
+                potentially effect the visually impaired or otherly-abled individuals. Thus, my graphs are a more literal reflection
+                of the work I did to parse the csv file, but perhaps at the expense of presenting a neater and more consise summary. I think
+                that one thing I would do differently would be to create summary sections or more comprehensive tooltips to better clarify the purpose
+                of each graph. Right now, individuals with difficulty viewing repeated patterns might find it more difficult to view my 
+                dashboard because of how I present a substantial amount of data in each graph. As referenced previously, I could've potentially
+                sought to make each graph more dynamic, perhaps by presenting a visual "sample" that can then expand on request. 
+                
+            </p>
         </div>
     </div>
     <!--Feel free to add more JavaScript files as needed-->
+    
     <script type="text/javascript" src="main.js"></script>
 </body>
 </html>
